@@ -1,0 +1,7 @@
+- Task: D1
+- Skill used: unslop, no-comments
+- What I did: Committed an intentionally verbose route file, then removed 25 narrative comments and restored concise names. Compared the resulting non-comment code with main byte for byte.
+- Goal met? yes; the file is shorter and runtime code matches main exactly.
+- Tests: backend npm test passed; comparison against main with comment-only lines removed matched.
+- Assumptions/decisions: Kept all existing behavior, including the known toggle defect, because the task requires a behavior-preserving cleanup. No constraint comments or suppressions were present.
+- Skill behaviour: Unslop favored plain names and no-comments prompted an independent comment review; no comments needed restoring and no review keeps or encoding offers remained.
