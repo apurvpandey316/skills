@@ -1,0 +1,7 @@
+- Task: A2
+- Skill used: tdd
+- What I did: Added an API test for empty and whitespace-only titles, then rejected blank or non-string titles at the POST boundary.
+- Goal met? yes; blank titles receive HTTP 400.
+- Tests: added regression; failed before the fix (201 !== 400), passed after; seed and full backend suite passed.
+- Assumptions/decisions: Preserve valid title text unchanged; missing and non-string titles are invalid too.
+- Skill behaviour: TDD required running the observable regression before modifying production code, confirming the intended failure.

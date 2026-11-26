@@ -22,3 +22,19 @@ test('GET /api/health returns ok', async () => {
 
 // NOTE: there are deliberately NO tests for toggle behaviour or for
 // title validation yet. That gap is part of the exercise.
+
+test('POST /api/tasks rejects empty and whitespace-only titles', async () => {
+  const server = await start();
+  const url = `http://localhost:${server.address().port}/api/tasks`;
+  try {
+    for (const title of ['', '  \t\n']) {
+      const res = await fetch(url, {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ title })
+      });
+      assert.strictEqual(res.status, 400);
+    }
+  } finally {
+    server.close();
+  }
+});
