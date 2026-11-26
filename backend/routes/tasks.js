@@ -23,7 +23,7 @@ router.put('/:id/toggle', (req, res) => {
   const { id } = req.params;
   const task = db.prepare('SELECT * FROM tasks WHERE id = ?').get(id);
   if (!task) return res.status(404).json({ error: 'Task not found' });
-  db.prepare('UPDATE tasks SET completed = 1 WHERE id = ?').run(id);
+  db.prepare('UPDATE tasks SET completed = 1 - completed WHERE id = ?').run(id);
   const updated = db.prepare('SELECT * FROM tasks WHERE id = ?').get(id);
   res.json(updated);
 });

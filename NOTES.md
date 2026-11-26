@@ -1,0 +1,8 @@
+- Task: A1
+- Skill/command used: ak-review; risk
+- What I did: Changed the SQLite update to invert completion atomically; added a two-direction API test. Reviewed the change against main: no critical or important findings; atomic update and behavioral test are strengths.
+- Goal met? yes, both transitions pass.
+- Tests: added; seed and 2 tests pass.
+- risk/verify output: risk reports route and test low, sparse history; untracked plan files show as new. Verify not requested.
+- Assumptions/decisions: completion is constrained to 0/1 by the existing schema; untracked user plans are excluded from commits.
+- Pack behaviour: review prioritizes history and asks for findings by severity; risk includes untracked plans and warns the history signal is weak.
