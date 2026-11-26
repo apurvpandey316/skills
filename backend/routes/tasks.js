@@ -5,7 +5,13 @@ const router = express.Router();
 
 // List all tasks (newest first)
 router.get('/', (req, res) => {
-  const tasks = db.prepare('SELECT * FROM tasks ORDER BY created_at DESC').all();
+  const parse = (value, fallback) => value === undefined ? fallback : (/^\d+$/.test(value) ? Number(value) : NaN);
+  const limit = parse(req.query.limit, 100);
+  const offset = parse(req.query.offset, 0);
+  if (!Number.isSafeInteger(limit) || limit < 1 || limit > 100 || !Number.isSafeInteger(offset)) {
+    return res.status(400).json({ error: 'Invalid limit or offset' });
+  }
+  const tasks = db.prepare('SELECT * FROM tasks ORDER BY created_at DESC, id DESC LIMIT ? OFFSET ?').all(limit, offset);
   res.json(tasks);
 });
 
