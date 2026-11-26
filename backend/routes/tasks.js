@@ -13,6 +13,7 @@ router.get('/', (req, res) => {
 router.post('/', (req, res) => {
   const { title } = req.body;
   const value = typeof title === 'string' ? title : '';
+  if (!value.trim()) return res.status(400).json({ error: 'Title is required' });
   const info = db.prepare('INSERT INTO tasks (title) VALUES (?)').run(value);
   const task = db.prepare('SELECT * FROM tasks WHERE id = ?').get(info.lastInsertRowid);
   res.status(201).json(task);

@@ -30,3 +30,14 @@ test('toggle changes a task in both directions', async () => {
     assert.strictEqual((await (await toggle()).json()).completed, 0);
   } finally { server.close(); }
 });
+
+test('rejects empty and whitespace titles', async () => {
+  const server = await start();
+  const url = `http://localhost:${server.address().port}/api/tasks`;
+  try {
+    for (const title of ['', '  \t  ']) {
+      const res = await fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ title }) });
+      assert.strictEqual(res.status, 400);
+    }
+  } finally { server.close(); }
+});
