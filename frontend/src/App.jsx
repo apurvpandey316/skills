@@ -32,7 +32,7 @@ export default function App() {
 
   return (
     <div className="container">
-      <h1>Tasks</h1>
+      <h1>Tasks <span aria-label={`${tasks.filter((task) => !task.completed).length} incomplete tasks`}>{tasks.filter((task) => !task.completed).length}</span></h1>
       <form onSubmit={handleAdd} className="add-form">
         <input
           value={title}

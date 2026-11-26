@@ -28,6 +28,12 @@ router.put('/:id/toggle', (req, res) => {
   res.json(updated);
 });
 
+// Clear all tasks
+router.delete('/', (req, res) => {
+  db.prepare('DELETE FROM tasks').run();
+  res.status(204).end();
+});
+
 // Delete a task
 router.delete('/:id', (req, res) => {
   const { id } = req.params;

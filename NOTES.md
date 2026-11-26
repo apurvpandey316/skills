@@ -1,0 +1,9 @@
+- Task: D3
+- Skill/command used: plain
+- What I did: Sequentially added an incomplete task count and a collection DELETE endpoint, with a behavior test for clearing.
+- Goal met? yes, both tasks implemented.
+- Tests: DELETE test added; seed, 2 tests and frontend build pass.
+- risk/verify output: not requested.
+- Assumptions/decisions: Collection DELETE is idempotent and returns 204, matching the existing individual delete style.
+- Pack behaviour: no parallel coordination workflow applied.
+- Gap vs pstack: no swarm analog; work was performed sequentially as instructed.
