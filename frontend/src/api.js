@@ -2,7 +2,8 @@ const BASE = '/api/tasks';
 
 export async function getTasks() {
   const res = await fetch(BASE);
-  return res.json();
+  const { data } = await res.json();
+  return data;
 }
 
 export async function addTask(title) {

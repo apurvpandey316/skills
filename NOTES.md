@@ -1,0 +1,7 @@
+- Task: C1
+- Skill used: poteto-mode, blast-radius, principle-migrate-callers-then-delete-legacy-apis
+- What I did: Searched tracked app code, tests and docs for GET /api/tasks consumers. Changed the route to return `{data, count}` and adapted the frontend API boundary to return its data array to App.
+- Goal met? yes for the repository; the real browser renders all seeded tasks through the new response. Existing external API consumers, if any, must migrate to the breaking contract.
+- Tests: added API contract test; backend seed and tests and frontend build passed; headless Chrome rendered all three seeded tasks via the real Vite proxy and backend.
+- Assumptions/decisions: count is the number of returned tasks. `frontend/src/api.js` is the only in-repo response parser; App uses its array; the existing test only calls health and README curl does not parse the body.
+- Skill behaviour: Blast-radius traced the wire format through the React render and required a real browser proof. Migrate-callers kept the app on one new contract without a compatibility response.
