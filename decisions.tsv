@@ -1,0 +1,5 @@
+ts	phase	decision	why	evidence	result
+2026-11-26T14:05:56Z	frame	Derive incomplete count from loaded tasks	The UI already refreshes the task array after mutations, so a second count state could drift	frontend/src/App.jsx	implementation pending
+2026-11-26T14:05:56Z	implementation	Display the derived count in the header badge	Counting incomplete rows from the existing array keeps the display synchronized with refreshes	frontend/src/App.jsx	code added
+2026-11-26T14:06:06Z	verification	Ran the production build and a browser journey against an isolated API	A build alone cannot prove the visible count follows task changes	VERIFICATION-d2.txt	build passed and badge followed empty, add, completion and deletion
+2026-11-26T14:06:26Z	review	Recorded limits of the browser proof and current toggle behavior	The captured result does not include a portable script, and main cannot reopen a completed task	VERIFICATION-d2.txt	browser evidence is not independently rerunnable from this branch; loading starts at zero

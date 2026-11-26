@@ -1,0 +1,1 @@
+PASS: real browser and isolated API badge counts 0 (empty), 1 and 2 (add), 1 (complete), 0 (delete incomplete).

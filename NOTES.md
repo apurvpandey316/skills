@@ -1,0 +1,7 @@
+- Task: D2
+- Skill used: show-me-your-work
+- What I did: Added a header badge derived from incomplete tasks and kept an append-only decision trail with the rationale and verification result.
+- Goal met? yes; the badge reflected an empty list, additions, completion and deletion in a real-browser journey against an isolated API.
+- Tests: frontend production build passed; browser journey passed, with captured output in VERIFICATION-d2.txt.
+- Assumptions/decisions: The badge shows zero before the initial fetch completes. Main's existing toggle bug prevents testing reopening; the badge reflects returned task state. The browser script was temporary and is not independently rerunnable from this branch.
+- Skill behaviour: The decision log records choices as they happen. An inherited-model review found the proof and loading limitations; cross-vendor review was unavailable. The trail supports review but does not warrant unreviewed trust.
