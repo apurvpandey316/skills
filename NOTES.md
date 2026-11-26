@@ -1,0 +1,7 @@
+- Task: B1
+- Skill used: architect
+- What I did: Traced the SQLite, API, and React boundaries; compared a foreign-key list entity with task-only labels and designed the former, including migration and compatibility.
+- Goal met? yes; the design covers schema, endpoints, UI, and existing-task migration.
+- Tests: no code added; design inspected against the current source.
+- Assumptions/decisions: A task belongs to exactly one list; non-empty lists cannot be deleted until tasks are moved or deleted.
+- Skill behaviour: Architect required two shapes and explicit ownership before selecting the relational design.
