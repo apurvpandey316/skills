@@ -1,39 +1,39 @@
 const express = require('express');
 const db = require('../db');
 
-const router = express.Router();
+const taskRouter = express.Router();
 
-// List all tasks (newest first)
-router.get('/', (req, res) => {
-  const tasks = db.prepare('SELECT * FROM tasks ORDER BY created_at DESC').all();
-  res.json(tasks);
+// This handler handles the request to list all of the task records, ordered from the newest records first.
+taskRouter.get('/', (requestObject, responseObject) => {
+  const allTaskRecords = db.prepare('SELECT * FROM tasks ORDER BY created_at DESC').all();
+  responseObject.json(allTaskRecords);
 });
 
-// Create a task
-router.post('/', (req, res) => {
-  const { title } = req.body;
+// This handler creates a new task record in the database when a task is submitted.
+taskRouter.post('/', (requestObject, responseObject) => {
+  const { title } = requestObject.body;
   const value = typeof title === 'string' ? title : '';
   const info = db.prepare('INSERT INTO tasks (title) VALUES (?)').run(value);
   const task = db.prepare('SELECT * FROM tasks WHERE id = ?').get(info.lastInsertRowid);
-  res.status(201).json(task);
+  responseObject.status(201).json(task);
 });
 
-// Toggle a task's completed state
-router.put('/:id/toggle', (req, res) => {
-  const { id } = req.params;
+// This handler updates the completed state of the task record identified by the supplied identifier.
+taskRouter.put('/:id/toggle', (requestObject, responseObject) => {
+  const { id } = requestObject.params;
   const task = db.prepare('SELECT * FROM tasks WHERE id = ?').get(id);
-  if (!task) return res.status(404).json({ error: 'Task not found' });
+  if (!task) return responseObject.status(404).json({ error: 'Task not found' });
   db.prepare('UPDATE tasks SET completed = 1 WHERE id = ?').run(id);
   const updated = db.prepare('SELECT * FROM tasks WHERE id = ?').get(id);
-  res.json(updated);
+  responseObject.json(updated);
 });
 
-// Delete a task
-router.delete('/:id', (req, res) => {
-  const { id } = req.params;
+// This handler deletes a task record from the database by its identifier.
+taskRouter.delete('/:id', (requestObject, responseObject) => {
+  const { id } = requestObject.params;
   const info = db.prepare('DELETE FROM tasks WHERE id = ?').run(id);
-  if (info.changes === 0) return res.status(404).json({ error: 'Task not found' });
-  res.status(204).end();
+  if (info.changes === 0) return responseObject.status(404).json({ error: 'Task not found' });
+  responseObject.status(204).end();
 });
 
-module.exports = router;
+module.exports = taskRouter;
