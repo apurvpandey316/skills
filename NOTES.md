@@ -1,0 +1,9 @@
+- Task: B4
+- Skill/command used: plain
+- What I did: Described task states and transitions and compared main's toggle with the model; identified the A1 correction and invariant gap.
+- Goal met? yes, lifecycle and toggle checked.
+- Tests: not added or run; analysis only.
+- risk/verify output: not requested.
+- Assumptions/decisions: Treat deletion as absence and completed as binary for valid API-created rows.
+- Pack behaviour: no dedicated state modelling workflow was available.
+- Gap vs pstack: no statechart analog; model written plainly.
