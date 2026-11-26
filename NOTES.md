@@ -1,0 +1,7 @@
+- Task: B2
+- Skill used: arena
+- What I did: Compared browser timers, persisted in-app eligibility, and a server worker/inbox, using three independent candidate designs and a cross-judge; synthesized a recommended contract.
+- Goal met? yes; three approaches are compared against stated criteria with trade-offs and a recommendation.
+- Tests: design-only; inspected current app and verified the synthesis against candidate artifacts and current boundaries.
+- Assumptions/decisions: In-app delivery is the smallest useful default; out-of-app delivery and multi-user identity require separate decisions. Cross-vendor models were unavailable.
+- Skill behaviour: Arena supplied independent alternatives, criterion scores, a cross-judge, and explicit grafts rather than selecting a design by intuition alone.
