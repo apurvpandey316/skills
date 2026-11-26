@@ -15,3 +15,12 @@
 - risk/verify output: verify actually ran npm test, exited 0 and ticked the step; risk rated route and tests low, new plan unknown, sparse history.
 - Assumptions/decisions: Non-string or missing titles are also rejected; valid titles retain their original whitespace.
 - Pack behaviour: verify executes and ticks a documented command; risk includes untracked files and warns of weak history.
+
+- Task: A3
+- Skill/command used: ak-review; risk
+- What I did: Merged A1 and A2 into this branch and retained both code and tests after conflicts. Reviewed the combined diff and documented findings and file scores in REVIEW.md.
+- Goal met? yes, review and risk scores recorded.
+- Tests: merged tests; seed and 3 tests pass.
+- risk/verify output: route, test and notes MEDIUM; verification plan low; history sparse.
+- Assumptions/decisions: Correction to A1 note: the schema does not enforce binary completion; API currently maintains it. Preserved both prior notes.
+- Pack behaviour: risk gives review ordering and warns against treating sparse history as a finding.
