@@ -4,6 +4,7 @@ import { getTasks, addTask, toggleTask, deleteTask } from './api';
 export default function App() {
   const [tasks, setTasks] = useState([]);
   const [title, setTitle] = useState('');
+  const incompleteCount = tasks.filter((task) => !task.completed).length;
 
   async function refresh() {
     setTasks(await getTasks());
@@ -32,7 +33,7 @@ export default function App() {
 
   return (
     <div className="container">
-      <h1>Tasks</h1>
+      <h1>Tasks <span className="task-count" aria-label={`${incompleteCount} incomplete tasks`}>{incompleteCount}</span></h1>
       <form onSubmit={handleAdd} className="add-form">
         <input
           value={title}

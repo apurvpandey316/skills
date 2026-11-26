@@ -1,0 +1,7 @@
+- Task: D3
+- Skill used: swarm
+- What I did: Ran two workers in parallel from main commit 108b5c3 using separate temporary output directories, then integrated the incomplete-count badge and collection DELETE endpoint.
+- Goal met? yes; the badge tracks incomplete tasks and DELETE /api/tasks clears all tasks with 204, including on an empty collection.
+- Tests: added an isolated-database API test for bulk delete, repeat delete and individual delete; backend suite and frontend build passed. A browser journey verified badge counts for empty, added, completed and deleted tasks.
+- Assumptions/decisions: The endpoint intentionally deletes every task and does not add a UI control. The badge begins at zero while the initial fetch is pending; main's known toggle bug remains outside scope. Workers used the available inherited model because pstack's default model is unavailable in this harness.
+- Skill behaviour: Swarm split independent frontend and backend work into parallel workers with separate outputs, then required integration and verification of both results.
