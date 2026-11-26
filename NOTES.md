@@ -1,0 +1,9 @@
+- Task: B1
+- Skill/command used: plain; ak-review
+- What I did: Designed model, API, UI and migration; reviewed the document for failure and compatibility paths.
+- Goal met? yes, design only.
+- Tests: not added or run; documentation only.
+- risk/verify output: not requested.
+- Assumptions/decisions: Default list preserves old tasks; deletion of nonempty lists is rejected.
+- Pack behaviour: review supplied severity and edge-case prompts.
+- Gap vs pstack: no architect analog; design produced plainly.
