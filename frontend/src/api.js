@@ -2,6 +2,7 @@ const BASE = '/api/tasks';
 
 export async function getTasks() {
   const res = await fetch(BASE);
+  if (!res.ok) throw new Error('Unable to load tasks');
   return res.json();
 }
 

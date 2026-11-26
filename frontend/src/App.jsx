@@ -4,9 +4,18 @@ import { getTasks, addTask, toggleTask, deleteTask } from './api';
 export default function App() {
   const [tasks, setTasks] = useState([]);
   const [title, setTitle] = useState('');
+  const [loading, setLoading] = useState(true);
+  const [loadError, setLoadError] = useState(false);
 
   async function refresh() {
-    setTasks(await getTasks());
+    try {
+      setTasks(await getTasks());
+      setLoadError(false);
+    } catch {
+      setLoadError(true);
+    } finally {
+      setLoading(false);
+    }
   }
 
   useEffect(() => {
@@ -41,6 +50,8 @@ export default function App() {
         />
         <button type="submit">Add</button>
       </form>
+      {loading && <p role="status">Loading tasks…</p>}
+      {loadError && <p role="alert">Could not load tasks. <button onClick={refresh}>Retry</button></p>}
       <ul className="task-list">
         {tasks.map((t) => (
           <li key={t.id} className={t.completed ? 'done' : ''}>

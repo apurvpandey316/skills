@@ -1,0 +1,9 @@
+- Task: B3
+- Skill/command used: plain
+- What I did: Planned measurable follow-ups and added initial loading and retry feedback, including HTTP error handling.
+- Goal met? yes, lowest-risk perceived responsiveness improvement implemented.
+- Tests: no tests added; backend seed and test and frontend build pass; no browser interaction test.
+- risk/verify output: not requested.
+- Assumptions/decisions: Treated vague request as perceived initial responsiveness; deferred optimistic writes until measured.
+- Pack behaviour: no dedicated ambiguity-resolution workflow was available.
+- Gap vs pstack: no figure-it-out analog; assumptions and incremental plan were made plainly.
