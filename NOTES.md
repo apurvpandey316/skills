@@ -1,0 +1,7 @@
+- Task: B4
+- Skill used: statechart
+- What I did: Modeled main's single-task lifecycle in TLA+, ran TLC, drew the resulting statechart, and replayed its shortest failing toggle path against the real API in an isolated database.
+- Goal met? yes; the model and code mismatch are recorded in STATECHART.md.
+- Tests: TLC found ToggleReverses violation; isolated API returned 0, 1, 1 for create and two toggles, confirming the path.
+- Assumptions/decisions: One task, sequential requests, deletion terminal; concurrency and persistence faults are out of scope. Used Java and a downloaded TLC jar because mise was unavailable.
+- Skill behaviour: Statechart required an explicit invariant, model-checker counterexample, and replay against the actual code rather than relying on inspection alone.
