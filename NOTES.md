@@ -1,0 +1,9 @@
+- Task: D1
+- Skill/command used: plain
+- What I did: Committed verbose names and redundant comments as a starting point, then restored concise names and removed filler comments without changing behavior.
+- Goal met? yes; final route differs from main only by comments.
+- Tests: none added; seed and backend test pass.
+- risk/verify output: not requested.
+- Assumptions/decisions: Existing short comments merely repeat route behavior and were removed.
+- Pack behaviour: no dedicated cleanup workflow available.
+- Gap vs pstack: no unslop analog; cleanup performed plainly.
