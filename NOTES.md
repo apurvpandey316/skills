@@ -1,0 +1,9 @@
+- Task: B2
+- Skill/command used: plain
+- What I did: Compared in-app, email worker and browser notification approaches, including reliability and operational tradeoffs; recommended staged delivery.
+- Goal met? yes, three approaches compared plainly.
+- Tests: not added or run; design document only.
+- risk/verify output: not requested.
+- Assumptions/decisions: External delivery and provider requirements are not specified; recommend in-app first.
+- Pack behaviour: no dedicated comparison workflow was available.
+- Gap vs pstack: no arena analog; the plain agent performed the comparison itself.
