@@ -1,0 +1,7 @@
+- Task: A1
+- Skill used: poteto-mode
+- What I did: Traced the toggle endpoint's constant update and changed it to invert the stored state. Added an API regression covering completion, uncompletion, and completion again.
+- Goal met? yes; the completed task returns 0 then 1 on consecutive toggles.
+- Tests: added regression; failed before the fix (1 !== 0), passed after; seed and full backend suite passed.
+- Assumptions/decisions: Existing completed values are 0 or 1, as produced by the application.
+- Skill behaviour: Root-cause and observable-behavior principles led to a small SQL fix and an API-level test. Cursor-specific controls and delegation were not used; the API test reproduced the actual endpoint.
