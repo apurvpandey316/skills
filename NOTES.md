@@ -1,0 +1,8 @@
+- Task: A2
+- Skill/command used: verify; risk
+- What I did: Rejected blank titles with 400 and added API tests. Defined a runnable verification step in specs/a2-validation/plan.md.
+- Goal met? yes, empty and whitespace titles are rejected.
+- Tests: added; seed and 2 tests pass.
+- risk/verify output: verify actually ran npm test, exited 0 and ticked the step; risk rated route and tests low, new plan unknown, sparse history.
+- Assumptions/decisions: Non-string or missing titles are also rejected; valid titles retain their original whitespace.
+- Pack behaviour: verify executes and ticks a documented command; risk includes untracked files and warns of weak history.
