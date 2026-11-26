@@ -1,0 +1,7 @@
+- Task: C2
+- Skill used: create-verification-skill, principle-prove-it-works
+- What I did: Added validated limit and offset to the existing array endpoint with stable ordering, and generated an isolated verification skill, feature map, and executable API proof.
+- Goal met? yes; the executable creates five tasks and proves consecutive, partial, out-of-range and offset-only pages and invalid query responses through real HTTP.
+- Tests: added invalid-query test; backend seed and tests and frontend build passed. The documented verification commands exited 0 and retained `/tmp/tasks-pagination-evidence.txt` after cleanup.
+- Assumptions/decisions: Missing limit returns all tasks; missing offset is zero; a supplied limit must be positive, offset non-negative, both safe decimal integers. This branch starts from main and retains the array response.
+- Skill behaviour: Create-verification-skill produced a reusable isolated harness and feature map, not just prose; Prove It Works required running the actual API and checking observable IDs and cleanup.

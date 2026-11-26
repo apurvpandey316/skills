@@ -5,7 +5,18 @@ const router = express.Router();
 
 // List all tasks (newest first)
 router.get('/', (req, res) => {
-  const tasks = db.prepare('SELECT * FROM tasks ORDER BY created_at DESC').all();
+  const parse = (value, fallback, min) => {
+    if (value === undefined) return fallback;
+    if (typeof value !== 'string' || !/^\d+$/.test(value)) return null;
+    const number = Number(value);
+    return Number.isSafeInteger(number) && number >= min ? number : null;
+  };
+  const limit = parse(req.query.limit, -1, 1);
+  const offset = parse(req.query.offset, 0, 0);
+  if (limit === null || offset === null) {
+    return res.status(400).json({ error: 'limit must be a positive integer and offset a non-negative integer' });
+  }
+  const tasks = db.prepare('SELECT * FROM tasks ORDER BY created_at DESC, id DESC LIMIT ? OFFSET ?').all(limit, offset);
   res.json(tasks);
 });
 
