@@ -22,3 +22,14 @@ test('GET /api/health returns ok', async () => {
 
 // NOTE: there are deliberately NO tests for toggle behaviour or for
 // title validation yet. That gap is part of the exercise.
+
+test('GET tasks returns data and count', async () => {
+  const server = await start();
+  try {
+    const res = await fetch(`http://localhost:${server.address().port}/api/tasks`);
+    const body = await res.json();
+    assert.strictEqual(res.status, 200);
+    assert.ok(Array.isArray(body.data));
+    assert.strictEqual(body.count, body.data.length);
+  } finally { server.close(); }
+});

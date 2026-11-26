@@ -1,0 +1,8 @@
+- Task: C1
+- Skill/command used: risk; ak-review
+- What I did: Wrapped the tasks response in data/count, migrated the frontend adapter and tested the API shape. Review: no critical findings; external clients need coordinated migration and HTTP error handling remains a pre-existing gap.
+- Goal met? yes for the repository caller; no browser end-to-end test was run.
+- Tests: API shape test added; seed, 2 tests and frontend build pass.
+- risk/verify output: risk identified the frontend caller, route and tests, all low with sparse history. Verify not requested.
+- Assumptions/decisions: count means returned array length; no compatibility period requested.
+- Pack behaviour: scores expose changed files but do not discover unchanged callers or establish compatibility; sparse history weakens ranking.

@@ -6,7 +6,7 @@ const router = express.Router();
 // List all tasks (newest first)
 router.get('/', (req, res) => {
   const tasks = db.prepare('SELECT * FROM tasks ORDER BY created_at DESC').all();
-  res.json(tasks);
+  res.json({ data: tasks, count: tasks.length });
 });
 
 // Create a task
