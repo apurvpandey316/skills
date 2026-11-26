@@ -4,6 +4,7 @@ import { getTasks, addTask, toggleTask, deleteTask } from './api';
 export default function App() {
   const [tasks, setTasks] = useState([]);
   const [title, setTitle] = useState('');
+  const [adding, setAdding] = useState(false);
 
   async function refresh() {
     setTasks(await getTasks());
@@ -15,9 +16,15 @@ export default function App() {
 
   async function handleAdd(e) {
     e.preventDefault();
-    await addTask(title);
-    setTitle('');
-    refresh();
+    if (adding) return;
+    setAdding(true);
+    try {
+      await addTask(title);
+      setTitle('');
+      await refresh();
+    } finally {
+      setAdding(false);
+    }
   }
 
   async function handleToggle(id) {
@@ -39,7 +46,7 @@ export default function App() {
           onChange={(e) => setTitle(e.target.value)}
           placeholder="New task..."
         />
-        <button type="submit">Add</button>
+        <button type="submit" disabled={adding}>{adding ? 'Adding…' : 'Add'}</button>
       </form>
       <ul className="task-list">
         {tasks.map((t) => (

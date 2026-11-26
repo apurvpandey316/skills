@@ -1,0 +1,7 @@
+- Task: B3
+- Skill used: figure-it-out
+- What I did: Wrote a scoped, falsifiable plan before code and added pending feedback and a submission guard to the add flow.
+- Goal met? yes; the button reports and prevents a repeat while add is pending, then resets after success or failure.
+- Tests: production build passed; headless Chrome with deferred and aborted requests verified pending state, reset, and retry.
+- Assumptions/decisions: Responsiveness here means honest immediate feedback, not a measured latency improvement; error presentation and optimistic updates are deferred.
+- Skill behaviour: The skill required a baseline, a narrowly scoped experiment, a concrete predicate and a recorded decision trail before implementation.
