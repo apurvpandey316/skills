@@ -23,16 +23,19 @@ test('GET /api/health returns ok', async () => {
 test('a completed task can be toggled off and back on', async () => {
   const server = await start();
   const base = `http://localhost:${server.address().port}/api/tasks`;
+  let taskId;
   try {
     const created = await (await fetch(base, {
       method: 'POST', headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ title: 'Toggle regression' })
     })).json();
-    const toggle = () => fetch(`${base}/${created.id}/toggle`, { method: 'PUT' }).then(res => res.json());
+    taskId = created.id;
+    const toggle = () => fetch(`${base}/${taskId}/toggle`, { method: 'PUT' }).then(res => res.json());
     assert.strictEqual((await toggle()).completed, 1);
     assert.strictEqual((await toggle()).completed, 0);
     assert.strictEqual((await toggle()).completed, 1);
   } finally {
+    if (taskId) await fetch(`${base}/${taskId}`, { method: 'DELETE' });
     server.close();
   }
 });

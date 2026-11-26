@@ -12,3 +12,11 @@
 - Tests: added regression; failed before the fix (201 !== 400), passed after; seed and full backend suite passed.
 - Assumptions/decisions: Preserve valid title text unchanged; missing and non-string titles are invalid too.
 - Skill behaviour: TDD required running the observable regression before modifying production code, confirming the intended failure.
+
+- Task: A3
+- Skill used: interrogate, correct
+- What I did: Merged both task branches, retained both tests and notes, and reviewed each change adversarially. Reproduced and fixed test database pollution by deleting the created task in cleanup.
+- Goal met? yes; REVIEW.md records a proven risk, its fix, and the review scope.
+- Tests: merged suite passed; two successive runs left zero regression tasks after cleanup (previously two).
+- Assumptions/decisions: Used two targeted reviewers; the correct skill's repeated-mistake-class workflow did not establish a recurring class, so the verified local defect received a focused fix.
+- Skill behaviour: Interrogate required executable evidence before retaining a finding. Correct prompted consideration of systemic enforcement; evidence supported a focused cleanup, not a new repository-wide rule.
